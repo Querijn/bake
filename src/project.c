@@ -718,7 +718,7 @@ int16_t bake_project_init_language(
     bake_project *project)
 {
     if (!project->language) {
-        project->language = ut_strdup("c");
+        project->language = ut_strdup(config->language);
     }
 
     if (!project->version) {
@@ -2256,11 +2256,6 @@ int16_t bake_project_create_project_json(
     ut_code_indent(f);
     ut_code_write(f, "\"author\": \"%s\",\n", author);
     ut_code_write(f, "\"description\": \"%s\"", description);
-
-    if (strcmp(project->language, "c")) {
-        ut_code_write(f, ",\n");
-        ut_code_write(f, "\"language\": \"%s\"", project->language);
-    }
 
     if (!project->public) {
         ut_code_write(f, ",\n");

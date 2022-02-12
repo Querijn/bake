@@ -619,6 +619,7 @@ int16_t bake_config_load(
     bake_config_add_var(cfg_out, "BAKE_HOME", ut_getenv("BAKE_HOME"), false);
     bake_config_add_var(cfg_out, "BAKE_TARGET", ut_getenv("BAKE_TARGET"), false);
     bake_config_add_var(cfg_out, "BAKE_PLATFORM", UT_PLATFORM_STRING, false);
+    bake_config_add_var(cfg_out, "BAKE_LANGUAGE", ut_getenv("BAKE_LANGUAGE"), false);
     bake_config_add_var(cfg_out, "PATH", ut_getenv("PATH"), true);
     bake_config_add_var(cfg_out, "CLASSPATH", ut_getenv("CLASSPATH"), true);
     if (!ut_os_match("windows")) {
@@ -644,6 +645,7 @@ int16_t bake_config_load(
 
     /* Precompute bake paths */
     cfg_out->configuration = ut_strdup(UT_CONFIG);
+    cfg_out->language = ut_getenv("BAKE_LANGUAGE");
     cfg_out->platform = UT_PLATFORM_PATH;
     cfg_out->target = UT_TARGET_PATH;
     cfg_out->home = UT_HOME_PATH;

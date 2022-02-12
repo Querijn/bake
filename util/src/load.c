@@ -998,6 +998,7 @@ int16_t ut_load_init(
     const char *home,
     const char *arch,
     const char *os,
+    const char *language,
     const char *config)
 {
     if (!home) {
@@ -1025,6 +1026,13 @@ int16_t ut_load_init(
         config = ut_getenv("BAKE_CONFIG");
         if (!config) {
             config = "debug";
+        }
+    }
+
+    if (!language) {
+        language = ut_getenv("BAKE_LANGUAGE");
+        if (!language) {
+            language = "c";
         }
     }
 
@@ -1060,6 +1068,7 @@ int16_t ut_load_init(
     /* Set environment variables */
     ut_setenv("BAKE_HOME", UT_HOME_PATH);
     ut_setenv("BAKE_TARGET", UT_TARGET_PATH);
+    ut_setenv("BAKE_LANGUAGE", language);
     ut_setenv("BAKE_CONFIG", config);
     ut_setenv("BAKE_ARCHITECTURE", UT_ARCH);
     ut_setenv("BAKE_OS", UT_OS);

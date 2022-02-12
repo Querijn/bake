@@ -1381,7 +1381,7 @@ int main(int argc, const char *argv[]) {
     ut_log_push("init");
 
     /* Initialize package loader for default home, arch, os and config */
-    ut_load_init(NULL, NULL, NULL, cfg);
+    ut_load_init(NULL, NULL, NULL, NULL, cfg);
 
     /* If artefact is manually specified, translate to platform specific name */
     if (artefact) {

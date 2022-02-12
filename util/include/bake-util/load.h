@@ -268,6 +268,7 @@ int16_t ut_load_init(
     const char *home,
     const char *arch,
     const char *os,
+    const char *language,
     const char *config);
 
 UT_API
